@@ -32,7 +32,8 @@ class MonteCarloPi:
         return 4 * (len(self.pointsInCircle) / self.pointsAmount)
         
     def generatePoints(self):
-        for _ in range(0, self.pointsAmount):
+        currentAmount = 0
+        while currentAmount < self.pointsAmount:
             x = random.uniform(0,1)
             y = random.uniform(0,1)
             inCircle = self.isPointInsideCircle(x, y)
@@ -40,6 +41,14 @@ class MonteCarloPi:
                 self.pointsInCircle.append(Point(x, y, inCircle))
             else:
                 self.pointsOutsideOfCircle.append(Point(x, y, inCircle))
+        #for _ in range(0, self.pointsAmount):
+        #    x = random.uniform(0,1)
+        #    y = random.uniform(0,1)
+        #    inCircle = self.isPointInsideCircle(x, y)
+        #    if (inCircle):
+        #        self.pointsInCircle.append(Point(x, y, inCircle))
+        #    else:
+        #        self.pointsOutsideOfCircle.append(Point(x, y, inCircle))
             
     def isPointInsideCircle(self, x, y):
         if (math.sqrt(x**2 + y**2) < 1):
